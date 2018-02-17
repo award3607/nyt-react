@@ -1,0 +1,34 @@
+{
+  "name": "nyt-react",
+  "version": "1.0.0",
+  "description": "NYT scrape with React",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "installDeps": "yarn && cd client && yarn"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/award3607/nyt-react.git"
+  },
+  "author": "Andrew Ward",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/award3607/nyt-react/issues"
+  },
+  "homepage": "https://github.com/award3607/nyt-react#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.6",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "nodemon": "^1.15.0"
+  }
+}
