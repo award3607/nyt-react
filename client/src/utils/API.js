@@ -5,6 +5,7 @@ const BASEURL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-ke
 
 export default {
     search: function(query) {
+        console.log(`Query was: ${query}`);
         return axios.get(BASEURL + query);
     }
 };
