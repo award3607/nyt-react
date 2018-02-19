@@ -6,7 +6,8 @@ const articleSchema = new Schema({
     date: Date,
     url: String,
     byline: String,
-    snippet: String
+    snippet: String,
+    isSaved: {type: Boolean, default: true}
 });
 
 const Article = mongoose.model('Article', articleSchema);
