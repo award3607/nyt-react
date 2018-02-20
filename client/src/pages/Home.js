@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Search from '../components/Search';
-import Results from '../components/Results';
+import SearchForm from '../components/SearchForm';
+import ArticlesContainer from '../components/ArticlesContainer';
 import Jumbotron from '../components/Jumbotron';
 import API from '../utils/API';
 
@@ -41,14 +41,14 @@ class Home extends Component {
         return (
             <div className="container">
                 <Jumbotron />
-                <Search
+                <SearchForm
                     term={this.state.term}
                     startYear={this.state.startYear}
                     endYear={this.state.endYear}
                     handleInputChange={this.handleInputChange}
                     handleSearchSubmit={this.handleSearchSubmit}
                 />
-                <Results results={this.state.results} />
+                <ArticlesContainer articles={this.state.results} />
             </div>
         );
     }
