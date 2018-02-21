@@ -1,8 +1,8 @@
-const { router } = require('express');
+const router = require('express').Router();
 const articlesController = require('../../controllers/articlesController');
 
-router.get('articles', articlesController.getAll);
-router.post('articles', articlesController.addOne);
-router.delete('articles', articlesController.deleteOne);
+router.get('/', articlesController.getAll);
+router.post('/', articlesController.addOne);
+router.delete('/', articlesController.deleteOne);
 
 module.exports = router;
