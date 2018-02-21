@@ -2,12 +2,11 @@ import React from 'react';
 import Article from './Article'
 
 const ArticlesContainer = props => {
-    const articles = props.articles.filter(article => article.document_type === 'article');
-
+    console.log(props.articles);
     return (
         <div className="articles-container">
-            {articles.map(article => 
-                <Article />
+            {props.articles.map(article => 
+                <Article key={article._id} article={article}/>
             )}
         </div>
     );

@@ -16,7 +16,8 @@ class Home extends Component {
         API.search(query)
         .then(res => {
             console.log(res);
-            this.setState({ results: res.data.response.docs })
+            const articles = res.data.response.docs.filter(doc => doc.document_type === 'article');
+            this.setState({ results: articles })
         })
         .catch(err => console.log(err));
     };
