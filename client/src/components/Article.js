@@ -1,33 +1,43 @@
 import React from 'react';
-import API from '../utils/API';
+// import API from '../utils/API';
 
 const Article = props => {
-    const saveData = {
-        title: props.article.headline.main,
-        date: props.article.pub_date,
-        url: props.article.web_url,
-        byline: props.article.byline.original,
-        snippet: props.article.snippet
-    };
+    // const handleSave = event => {
+    //     console.log(props.article);
+    //     API.saveArticle(props.article)
+    //     .then(res => {
+    //         console.log(`Saved article ${props.article.title}`);
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     });
+    // };
 
-    const handleSave = event => {
-        console.log(saveData);
-        API.saveArticle(saveData)
-        .then(res => {
-            console.log(`Saved article ${props.article.headline.main}`);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-    };
+    // const handleDelete = event => {
+    //     console.log(`Deleting ${props.article._id}`);
+    //     API.deleteArticle(props.article._id)
+    //     .then(() => {
+
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     });
+    // };
 
     return (
         <div className="well">
-            <h3><a href={props.article.web_url} target="_blank">{props.article.headline.main}</a></h3>
-            <h5>{props.article.byline.original}</h5>
-            <h6>{props.article.pub_date}</h6>
+            <h3><a href={props.article.url} target="_blank">{props.article.title}</a></h3>
+            <h5>{props.article.byline}</h5>
+            <h6>{props.article.date}</h6>
             <p>{props.article.snippet}</p>
-            <button className="btn btn-primary" onClick={handleSave}>Save</button>
+            { props.article.isSaved
+                                ? <button className="btn btn-danger" onClick={() => props.handleDelete(props.article._id)}>Delete</button>
+                                : <button className="btn btn-primary" onClick={() => props.handleSave(props.article)}>Save</button>
+            }
+
+            {/* <button className="btn btn-primary" { props.article.isSaved
+                                                ? (onClick={handleSave}>Save)
+                                                : (onClick={handleDelete}>Delete) }></button> */}
         </div>
     );
 }

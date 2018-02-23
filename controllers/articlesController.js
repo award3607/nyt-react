@@ -25,7 +25,7 @@ exports.addOne = (req, res) => {
 };
 
 exports.deleteOne = (req, res) => {
-    Article.findByIdAndRemove()
+    Article.findByIdAndRemove(req.params.id)
     .then(function(deletedArticle) {
         console.log(`Deleted article id ${deletedArticle._id}`);
         res.send(`Deleted article id ${deletedArticle._id}`);

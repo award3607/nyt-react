@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SearchForm from '../components/SearchForm';
-import ArticlesContainer from '../components/ArticlesContainer';
+import Article from '../components/Article'
 import Jumbotron from '../components/Jumbotron';
 import API from '../utils/API';
 
@@ -9,15 +9,27 @@ class Home extends Component {
         term: '',
         startYear: '',
         endYear: '',
-        results: []
+        results: [],
     };
 
     searchNYT = query => {
         API.search(query)
         .then(res => {
             console.log(res);
-            const articles = res.data.response.docs.filter(doc => doc.document_type === 'article');
-            this.setState({ results: articles })
+            const rawArticles = res.data.response.docs.filter(doc => doc.document_type === 'article');
+            console.log(rawArticles);
+            const articles = [];
+            rawArticles.forEach(rawArticle => {
+                articles.push({
+                    title: rawArticle.headline.main,
+                    date: rawArticle.pub_date,
+                    url: rawArticle.web_url,
+                    byline: rawArticle.byline.original,
+                    snippet: rawArticle.snippet
+                });                
+            });
+            console.log(`Processed articles: ${articles.length}`);
+            this.setState({ results: articles });
         })
         .catch(err => console.log(err));
     };
@@ -38,6 +50,18 @@ class Home extends Component {
         this.searchNYT(query);
     };
 
+    handleSave = articleToSave => {
+        API.saveArticle(articleToSave)
+        .then(res => {
+            console.log(`Saved article ${articleToSave.title}`);
+            const articles = this.state.results.filter(article => article.title !== articleToSave.title);
+            this.setState({ results: articles });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
+
     render() {
         return (
             <div className="container">
@@ -49,7 +73,9 @@ class Home extends Component {
                     handleInputChange={this.handleInputChange}
                     handleSearchSubmit={this.handleSearchSubmit}
                 />
-                <ArticlesContainer articles={this.state.results} />
+                {this.state.results.map(article => 
+                    <Article key={article._id} article={article} handleSave={this.handleSave}/>
+                )}
             </div>
         );
     }
