@@ -28,9 +28,9 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/api', apiRoutes);
 
 //otherwise send React app
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, './client/build/index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
 
 //allow CORS
 // app.use(cors());
