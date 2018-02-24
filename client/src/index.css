@@ -3,3 +3,19 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.panel-default > .panel-heading {
+  background-color: #20315A;
+  color: white;
+}
+
+.panel-info>.panel-footer {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.jumbotron {
+  background-color: #20315A;
+  color: white;
+}

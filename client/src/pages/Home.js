@@ -74,7 +74,7 @@ class Home extends Component {
                     handleSearchSubmit={this.handleSearchSubmit}
                 />
                 {this.state.results.map(article => 
-                    <Article key={article._id} article={article} handleSave={this.handleSave}/>
+                    <Article key={article.url} article={article} handleSave={this.handleSave}/>
                 )}
             </div>
         );
