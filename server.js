@@ -3,9 +3,7 @@ const bodyparser = require('body-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const apiRoutes = require('./routes/api/apiRoutes');
-const cors = require('cors');
 const path = require('path');
-
 
 const app = express();
 
@@ -31,9 +29,6 @@ app.use('/api', apiRoutes);
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
-
-//allow CORS
-// app.use(cors());
 
 //mongoose config
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/nytreact';

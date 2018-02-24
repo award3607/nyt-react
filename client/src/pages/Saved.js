@@ -32,7 +32,7 @@ class Saved extends Component {
 
     render() {
         return (
-            <div className="articles-container">
+            <div className="container">
                 <Jumbotron />
                 {this.state.savedArticles.map(article => 
                     <Article key={article._id} article={article} handleDelete={this.handleDelete}/>

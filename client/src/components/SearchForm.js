@@ -31,6 +31,7 @@ const SearchForm = props => {
                     className="form-control"
                     id="endYear"
                 />
+                <br />
                 <button onClick={props.handleSearchSubmit} className="btn btn-primary">
                     Search
                 </button>

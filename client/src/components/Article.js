@@ -2,27 +2,6 @@ import React from 'react';
 // import API from '../utils/API';
 
 const Article = props => {
-    // const handleSave = event => {
-    //     console.log(props.article);
-    //     API.saveArticle(props.article)
-    //     .then(res => {
-    //         console.log(`Saved article ${props.article.title}`);
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     });
-    // };
-
-    // const handleDelete = event => {
-    //     console.log(`Deleting ${props.article._id}`);
-    //     API.deleteArticle(props.article._id)
-    //     .then(() => {
-
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     });
-    // };
 
     return (
         <div className="well">

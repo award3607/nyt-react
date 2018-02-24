@@ -44,8 +44,8 @@ class Home extends Component {
 
     handleSearchSubmit = event => {
         event.preventDefault();
-        let query = `&q=${this.state.term}`;
-        if (parseInt(this.state.startYear, 10)) query += `&being_date=${this.state.startYear}0101`;
+        let query = `&q=${this.state.term.replace(/\s/g, '+')}`;
+        if (parseInt(this.state.startYear, 10)) query += `&begin_date=${this.state.startYear}0101`;
         if (parseInt(this.state.endYear, 10)) query += `&end_date=${this.state.endYear}0101`;
         this.searchNYT(query);
     };
